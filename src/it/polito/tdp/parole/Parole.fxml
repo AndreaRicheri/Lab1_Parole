@@ -22,10 +22,25 @@
          <children>
             <HBox spacing="10.0">
                <children>
-                  <Label text="Parola" />
-                  <TextField fx:id="txtParola" onAction="#doInsert" promptText="inserisci..." />
-                  <Button fx:id="btnInserisci" mnemonicParsing="false" onAction="#doInsert" text="Inserisci" />
-                  <Button fx:id="btnCancella" mnemonicParsing="false" onAction="#doCancella" text="Cancella" />
+                  <Label text="Parola:">
+                     <HBox.margin>
+                        <Insets top="4.0" />
+                     </HBox.margin></Label>
+                  <TextField fx:id="txtParola" promptText="Inserisci parola..." />
+                  <Button fx:id="btnCancella" mnemonicParsing="false" onAction="#doCancella" text="Cancella">
+                     <HBox.margin>
+                        <Insets left="75.0" />
+                     </HBox.margin></Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="341.0">
+               <children>
+                  <Button fx:id="btnInserisciLinked" mnemonicParsing="false" onAction="#doInsertL" text="Inserisci LinkedList" />
+                  <Button fx:id="btnInserisciArray" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doInsertA" text="Inserisci ArrayList">
+                     <HBox.margin>
+                        <Insets left="121.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
             <TextArea fx:id="txtResult" editable="false" prefHeight="200.0" prefWidth="332.0" wrapText="true" />

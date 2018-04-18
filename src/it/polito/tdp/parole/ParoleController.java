@@ -7,6 +7,7 @@ package it.polito.tdp.parole;
 
 
 import it.polito.tdp.parole.model.Parole;
+import it.polito.tdp.parole.model.Parole_Arr;
 
 import java.net.URL;
 import java.util.LinkedList;
@@ -22,6 +23,7 @@ import javafx.scene.control.TextField;
 public class ParoleController {
 	
 	Parole elenco ;
+	Parole_Arr elenco2;
 	
 
     @FXML // ResourceBundle that was given to the FXMLLoader
@@ -37,6 +39,12 @@ public class ParoleController {
     private TextArea txtResult; // Value injected by FXMLLoader
     
     @FXML
+    private Button btnInserisciArray;
+
+    @FXML
+    private Button btnInserisciLinked;
+    
+    @FXML
     private TextArea txtTime;
     
     @FXML
@@ -45,8 +53,7 @@ public class ParoleController {
     @FXML
     private Button btnCancella;
 
-    @FXML // fx:id="btnInserisci"
-    private Button btnInserisci; // Value injected by FXMLLoader
+    
     
     
 
@@ -84,7 +91,7 @@ public class ParoleController {
     
     
     @FXML
-    void doInsert(ActionEvent event) {
+    void doInsertL(ActionEvent event) {
     
     // TODO
    double tempoIniziale= System.nanoTime();
@@ -95,6 +102,40 @@ public class ParoleController {
       elenco.addParola(parola);
       
       for(String x: elenco.getElenco()){
+    	  txtResult.appendText(x);
+    	  txtResult.appendText("\n");
+    	  txtParola.clear();
+    
+    	  
+      }
+      
+      txtTime.clear();
+    double tempoFinale= System.nanoTime();
+  	
+    double tempoEffettivo=tempoFinale-tempoIniziale;
+    tempoEffettivo=tempoEffettivo/1000000000;
+	
+	   	
+	
+	String tempoStringa = "Il tempo effettivo per l'inserimento é: "+tempoEffettivo+" secondi";
+	
+	txtTime.appendText(tempoStringa);
+
+    	
+    }
+    
+    @FXML
+    void doInsertA(ActionEvent event) {
+    
+    // TODO
+   double tempoIniziale= System.nanoTime();
+      txtResult.clear();
+         
+      String parola=txtParola.getText();
+      
+      elenco2.addParola(parola);
+      
+      for(String x: elenco2.getElenco()){
     	  txtResult.appendText(x);
     	  txtResult.appendText("\n");
     	  txtParola.clear();
@@ -143,11 +184,13 @@ public class ParoleController {
     void initialize() {
         assert txtParola != null : "fx:id=\"txtParola\" was not injected: check your FXML file 'Parole.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'Parole.fxml'.";
-        assert btnInserisci != null : "fx:id=\"btnInserisci\" was not injected: check your FXML file 'Parole.fxml'.";
+        assert btnInserisciLinked != null : "fx:id=\"btnInserisciLinked\" was not injected: check your FXML file 'Parole.fxml'.";
+        assert btnInserisciArray != null : "fx:id=\"btnInserisciArray\" was not injected: check your FXML file 'Parole.fxml'.";
         assert btnCancella != null : "fx:id=\"btnCancella\" was not injected: check your FXML file 'Parole.fxml'.";
         assert txtTime != null : "fx:id=\"txtTime\" was not injected: check your FXML file 'Parole.fxml'.";
         
         elenco = new Parole() ;
+        elenco2 = new Parole_Arr();
         
     }
 }
