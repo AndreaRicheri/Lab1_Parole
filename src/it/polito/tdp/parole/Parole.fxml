@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polito.tdp.parole.ParoleController">
    <top>
@@ -35,10 +36,24 @@
             </HBox>
             <HBox prefHeight="0.0" prefWidth="341.0">
                <children>
-                  <Button fx:id="btnInserisciLinked" mnemonicParsing="false" onAction="#doInsertL" text="Inserisci LinkedList" />
+                  <Button fx:id="btnInserisciLinked" mnemonicParsing="false" onAction="#doInsertL" prefHeight="25.0" prefWidth="114.0" text="Inserisci LinkedList">
+                     <font>
+                        <Font size="11.0" />
+                     </font></Button>
                   <Button fx:id="btnInserisciArray" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doInsertA" text="Inserisci ArrayList">
                      <HBox.margin>
-                        <Insets left="121.0" />
+                        <Insets left="7.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btnDifferenza" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#doDifference" style="-fx-background-color: black;" text="Controlla Differenza" textFill="WHITE">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="7.0" />
                      </HBox.margin>
                   </Button>
                </children>

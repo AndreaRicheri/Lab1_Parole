@@ -38,6 +38,9 @@ public class ParoleController {
     @FXML // fx:id="txtResult"
     private TextArea txtResult; // Value injected by FXMLLoader
     
+    @FXML // fx:id="btnDifferenza"
+    private Button btnDifferenza; // Value injected by FXMLLoader
+    
     @FXML
     private Button btnInserisciArray;
 
@@ -55,7 +58,82 @@ public class ParoleController {
 
     
     
-    
+    @FXML
+    void doDifference(ActionEvent event) {
+    	
+    	Random random = new Random();
+    	
+    	txtResult.clear();
+    	txtTime.clear();
+    	String parola="Precipitevolmente";
+    	int a = 50; // numero minimo
+    	int b = 5000; // numero massimo
+    	int c = ((b-a) + 1);
+    	int n = random.nextInt(c);
+    	elenco.reset();
+    	elenco2.reset();
+    	
+    			
+    	
+    	
+    	// TODO
+    	   double tempoIniziale1= System.nanoTime();
+    	    
+    	   for(int i=0; i<n; i++)
+    	   {
+    	      elenco.addParola(parola);
+    	   }
+    	      
+    	      for(String x: elenco.getElenco()){
+    	    	  txtResult.appendText(x);
+    	    	  txtResult.appendText("\n");
+    	    	  txtParola.clear();
+    	    	  txtResult.clear();
+    	    
+    	    	  
+    	      }
+    	      
+    	    double tempoFinale1= System.nanoTime();
+    	  	
+    	    double tempoEffettivoLINKED=tempoFinale1-tempoIniziale1;
+    	    tempoEffettivoLINKED=tempoEffettivoLINKED/1000000000;
+    		
+    	 // TODO
+    	    double tempoIniziale2= System.nanoTime();
+    	   
+    	    for(int i=0; i<n; i++)
+     	   {
+     	      elenco2.addParola(parola);
+     	   }
+    	         
+    	       
+    	       
+    	       for(String x: elenco2.getElenco()){
+    	     	  txtResult.appendText(x);
+    	     	  txtResult.appendText("\n");
+    	     	  txtParola.clear();
+    	     	 txtResult.clear();
+    	    	    
+    	     
+    	     	  
+    	       }
+    	       
+    	       txtTime.clear();
+    	     double tempoFinale2= System.nanoTime();
+    	   	
+    	     double tempoEffettivoARRAY=tempoFinale2-tempoIniziale2;
+    	     tempoEffettivoARRAY=tempoEffettivoARRAY/1000000000;	
+    	    
+
+    	     txtTime.appendText("Per fare questa prova ho salvato per "+n+" volte (un numero generato casualmente dal pc compreso tra 50 e 5000) in una LinkedList e in una ArrayList la parola più lunga del dizionario italiano: PRECIPITEVOLMENTE. Ho poi stampato tutto e cancellato tutto. Ecco i risultati:");
+    	     txtTime.appendText("\n");
+    	     txtTime.appendText("Il tempo per eseguire questa operazione con una LinkedList è stato "+tempoEffettivoLINKED+" secondi");
+    	     txtTime.appendText("\n");
+    	     txtTime.appendText("Il tempo per eseguire questa operazione con una ArrayList è stato "+tempoEffettivoARRAY+" secondi");
+    	     
+    	     
+    	     
+    } 
 
 
     @FXML
@@ -188,6 +266,7 @@ public class ParoleController {
         assert btnInserisciArray != null : "fx:id=\"btnInserisciArray\" was not injected: check your FXML file 'Parole.fxml'.";
         assert btnCancella != null : "fx:id=\"btnCancella\" was not injected: check your FXML file 'Parole.fxml'.";
         assert txtTime != null : "fx:id=\"txtTime\" was not injected: check your FXML file 'Parole.fxml'.";
+        assert btnDifferenza != null : "fx:id=\"btnDifferenza\" was not injected: check your FXML file 'Parole.fxml'.";
         
         elenco = new Parole() ;
         elenco2 = new Parole_Arr();
